@@ -1,6 +1,8 @@
 pipeline {
     agent any
+
     stages {
+
         stage('Build') {
             steps {
                 echo 'Building Agile Travel System'
@@ -8,12 +10,14 @@ pipeline {
                 bat 'pip install -r requirements.txt'
             }
         }
+
         stage('Docker Build') {
             steps {
                 echo 'Building Docker Image'
                 bat 'docker build -t agile-travel-system:latest .'
             }
         }
+
         stage('Docker Run') {
             steps {
                 echo 'Starting Agile Travel System container'
@@ -22,8 +26,14 @@ pipeline {
             }
         }
     }
+
     post {
-        success { echo 'Agile Travel System CI/CD pipeline completed successfully!' }
-        failure { echo 'Pipeline failed. Check the console output.' }
+        success {
+            echo 'Agile Travel System CI/CD pipeline completed successfully!'
+        }
+
+        failure {
+            echo 'Pipeline failed. Check the console output.'
+        }
     }
 }
