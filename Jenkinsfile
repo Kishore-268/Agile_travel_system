@@ -3,6 +3,12 @@ pipeline {
 
     stages {
 
+        stage('Get Clone') {
+            steps {
+                echo 'Getting Agile Travel System source code'
+            }
+        }
+
         stage('Build') {
             steps {
                 echo 'Building Agile Travel System'
