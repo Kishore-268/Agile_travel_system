@@ -9,10 +9,17 @@ pipeline {
             }
         }
 
+        stage('Check Docker') {
+            steps {
+                echo 'Checking Docker installation'
+                bat 'where docker'
+                bat 'docker --version'
+            }
+        }
+
         stage('Docker Build') {
             steps {
                 echo 'Building Agile Travel System Docker Image'
-
                 bat 'docker build -t agile-travel-system:latest .'
             }
         }
